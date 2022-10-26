@@ -1,0 +1,44 @@
+{
+  "name": "clwapi-helper",
+  "version": "0.0.1",
+  "description": "helper for clwrota/medirota api access",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm run lint && npm run build && mocha test/index.js",
+    "build": "rollup src/index.js --format umd --name \"clwapi-helper\" --file dist/index.js",
+    "lint": "eslint src/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jplomas/clwapi-helper.git"
+  },
+  "keywords": [
+    "clwrota",
+    "nodejs",
+    "medirota",
+    "api"
+  ],
+  "author": "JP Lomas <jp.lomas@gmail.com> (https://lomas.doctor/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jplomas/clwapi-helper/issues"
+  },
+  "homepage": "https://github.com/jplomas/clwapi-helper#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/node": "^7.19.1",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/register": "^7.18.9",
+    "@rollup/plugin-babel": "^6.0.2",
+    "chai": "^4.3.6",
+    "eslint": "^8.26.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "mocha": "^10.1.0",
+    "rollup": "^3.2.3",
+    "rollup-plugin-eslint": "^7.0.0"
+  }
+}
