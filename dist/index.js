@@ -55,21 +55,21 @@
           return false;
         }
       } catch (error) {
+        /*
         // MOCK success:
         console.log('mocking success');
-        this.token = 'de8831a1-3027-435e-8fed-a31068da8374';
+        this.token = 'token here';
         this.lastStatus = 200;
         const now = new Date();
         this.expires = new Date(now.getTime() + 15 * 60000);
         this.lastData = { data: 'mock data' };
         this.lastCallTime = null;
         return true;
-        /*
+        */
         this.lastStatus = 403;
         this.token = null;
         this.expires = null;
         return false;
-        */
       }
     }
 
