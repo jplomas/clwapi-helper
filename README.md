@@ -13,23 +13,24 @@ CLW_PASSWORD=password-here
 ```
 
 Progress/To do:
-[X] env variables/.env configuration
-[X] instatiate a class
-[X] -> test
-[X] login and get a token
-[X] -> test
-[X] set a token expiry date
-[X] -> test
-[X] re-use a token where able
-[X] -> test
-[X] don't reattempt to login if a token is still valid
-[X] -> test
-[X] rate limit API calls to 1/20 sec
-[X] -> test
-[ ] max API call use per token (??superfluous with rate limiting)
-[ ] -> test
-[ ] configure JSON/XML response requested for API calls where this is an option
-[ ] -> test
-[ ] test bundling
-[ ] ?fix axios dependency
-[ ] deploy to NPM
+
+- [X] env variables/.env configuration
+- [X] instatiate a class
+- [X] -> test
+- [X] login and get a token
+- [X] -> test
+- [X] set a token expiry date
+- [X] -> test
+- [X] re-use a token where able
+- [X] -> test
+- [X] don't reattempt to login if a token is still valid
+- [X] -> test
+- [X] rate limit API calls to 1/20 sec
+- [X] -> test
+- [ ] max API call use per token (??superfluous with rate limiting)
+- [ ] -> test
+- [ ] configure JSON/XML response requested for API calls where this is an option
+- [ ] -> test
+- [ ] test bundling
+- [ ] ?fix axios dependency
+- [ ] deploy to NPM
