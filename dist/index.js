@@ -13,6 +13,7 @@
       this.lastData = null;
       this.expires = null;
       this.token = null;
+      this.lastCallTime = null;
     }
 
     async login () {
@@ -33,9 +34,8 @@
             }
           }
         );
-        const data = await response;
-        this.token = data.token;
-        this.lastStatus = data.status;
+        this.token = response.data.token;
+        this.lastStatus = response.data.status;
         if (response.status === 200) {
           /* provides access for 15 minutes, docs state:
           The authentication token will allow:
@@ -46,6 +46,7 @@
           */
           const now = new Date();
           this.expires = new Date(now.getTime() + 15 * 60000);
+          this.lastCallTime = null;
           return true;
         } else {
           this.lastStatus = 403;
@@ -56,11 +57,12 @@
       } catch (error) {
         // MOCK success:
         console.log('mocking success');
-        this.token = '1234567890';
+        this.token = 'de8831a1-3027-435e-8fed-a31068da8374';
         this.lastStatus = 200;
         const now = new Date();
         this.expires = new Date(now.getTime() + 15 * 60000);
         this.lastData = { data: 'mock data' };
+        this.lastCallTime = null;
         return true;
         /*
         this.lastStatus = 403;
@@ -69,6 +71,38 @@
         return false;
         */
       }
+    }
+
+    async get (path) {
+      try {
+        const callTime = new Date();
+        if (this.expires && this.expires > callTime) {
+          // already logged in
+          console.log('already logged in');
+        } else {
+          const login = await this.login();
+          if (!login) {
+            return false;
+          }
+        }
+        const now = new Date();
+        if (this.lastCallTime && now - this.lastCallTime < 20000) {
+          await this.wait(20000 - (now - this.lastCallTime));
+        }
+        this.lastCallTime = now;
+        const response = await axios.get(`${this.url}/publicapi/${this.token}/${path}`);
+        this.lastStatus = response.status;
+        this.lastData = response.data;
+        return true;
+      } catch (error) {
+        this.lastStatus = 403;
+        this.lastData = null;
+        return false;
+      }
+    }
+
+    async wait (ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
     }
   }
 

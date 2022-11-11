@@ -24,15 +24,22 @@ describe('# Exports a class', () => {
 describe('# API functionality', () => {
   it('can fetch a login token', async () => {
     const tokenCall = await x.login();
-    console.log(x.token);
+    console.log(`      token = ${x.token}`);
     expect(tokenCall).to.equal(true);
   });
   it('# has an expiry Date', async () => {
-    console.log(x.expires);
     expect(x.expires instanceof Date).to.equal(true);
   });
   it('will reuse login tokens if not expired', async () => {
     const tokenCall = await x.login();
     expect(tokenCall).to.equal(true);
+  });
+  it('can make an API call and receive data', async () => {
+    const data = await x.get('date/2022-11-10/oncalls');
+    expect(data).to.equal(true);
+  });
+  it('will rate limit multiple API calls', async () => {
+    const data = await x.get('date/2022-11-10/oncalls');
+    expect(data).to.equal(true);
   });
 });
