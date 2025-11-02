@@ -1,5 +1,9 @@
 # clwapi-helper
 
+> [!IMPORTANT]
+> This API seems to have been removed by the vendor, which is a shame.  This repo is, therefore, archived.
+>
+
 Helper to do the login/token management for interactions with Rotamap Ltd's CLWrota/Medirota Public API.
 
 This tool is not affiliated with or endorsed by Rotamap Ltd and has been developed to facilitate my own interactions with their API.  It is released 'as is' in the public spirit of open source software with a permissive MIT license.
